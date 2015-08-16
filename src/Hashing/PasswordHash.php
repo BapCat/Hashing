@@ -2,7 +2,7 @@
 
 class PasswordHash {
   public function make($password) {
-    return password_hash($password, PASSWORD_BCRYPT);
+    return password_hash($password, PASSWORD_DEFAULT);
   }
   
   public function check($password, $hash) {
@@ -10,6 +10,6 @@ class PasswordHash {
   }
   
   public function needsRehash($hash) {
-    return password_needs_rehash($hash, PASSWORD_BCRYPT);
+    return password_needs_rehash($hash, PASSWORD_DEFAULT);
   }
 }
