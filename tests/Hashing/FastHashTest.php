@@ -1,7 +1,7 @@
 <?php
 
 use BapCat\Security\Hashing\FastHash;
-use BapCat\Security\Hashing\Crc32FastHash;
+use BapCat\Security\Hashing\Algorithms\Crc32FastHash;
 
 class FastHashTest extends  PHPUnit_Framework_TestCase {
   public function testCrc32() {

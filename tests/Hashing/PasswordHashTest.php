@@ -1,10 +1,11 @@
 <?php
 
 use BapCat\Security\Hashing\PasswordHash;
+use BapCat\Security\Hashing\Algorithms\DefaultPasswordHash;
 
 class PasswordHashTest extends  PHPUnit_Framework_TestCase {
   public function testBcrypt() {
-    $this->doHash(new PasswordHash(), PASSWORD_DEFAULT, 'Test');
+    $this->doHash(new DefaultPasswordHash(), PASSWORD_DEFAULT, 'Test');
   }
   
   private function doHash(PasswordHash $hasher, $algo, $password) {

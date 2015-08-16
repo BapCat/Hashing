@@ -1,4 +1,6 @@
-<?php namespace BapCat\Security\Hashing;
+<?php namespace BapCat\Security\Hashing\Algorithms;
+
+use BapCat\Security\Hashing\FastHash;
 
 class Crc32FastHash implements FastHash {
   public function make($data) {
