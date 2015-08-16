@@ -11,7 +11,11 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0"
+    "php": ">=5.5.0",
+    "bapcat/interfaces": "^1.0"
+  },
+  "require-dev": {
+    "bapcat/phi": "^1.0"
   },
   "autoload": {
     "psr-4": {
