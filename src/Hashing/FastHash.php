@@ -1,38 +1,37 @@
 <?php namespace BapCat\Security\Hashing;
 
 use BapCat\Interfaces\Values\Value;
-use BapCat\Values\Password;
 
 use InvalidArgumentException;
 
 /**
- * Represents a hashed password
+ * Represents a fast hash
  * 
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-class PasswordHash extends Value {
+class FastHash extends Value {
   /**
-   * The hash of the password
+   * The hash
    * 
    * @var  string
    */
   private $raw;
   
   /**
-   * A password hasher
+   * A hasher
    * 
-   * @var  PasswordHasher
+   * @var  FastHasher
    */
   private $hasher;
   
   /**
    * Constructor
    * 
-   * @param  string          $name    The hash to wrap 
-   * @param  PasswordHasher  $hasher  A password hasher
+   * @param  string      $name    The hash to wrap 
+   * @param  FastHasher  $hasher  A hasher
    */
-  public function __construct($hash, PasswordHasher $hasher) {
+  public function __construct($hash, FastHasher $hasher) {
     $this->validate($hash);
     
     $this->raw    = $hash;
@@ -47,8 +46,8 @@ class PasswordHash extends Value {
    * @param  string  $hash  The value to validate
    */
   private function validate($hash) {
-    if(preg_match('/^\$2[aby]\$[\d]{2}\$[\d\.\/a-zA-Z]{53}$/', $hash) === 0) {
-      throw new InvalidArgumentException("Expected password hash, but got [$hash] instead");
+    if(preg_match('/^[\da-zA-Z]{8}$/', $hash) === 0) {
+      throw new InvalidArgumentException("Expected hash, but got [$hash] instead");
     }
   }
   
@@ -74,28 +73,19 @@ class PasswordHash extends Value {
    * Gets the raw value this object wraps
    * 
    * @return  string  The raw value this object wraps
+   * 
+   * @return  boolean  True if they match, false otherwise
    */
   protected function getRaw() {
     return $this->raw;
   }
   
   /**
-   * Checks if this hash matches a password
+   * Checks if this hash matches an input
    * 
-   * @param  Password  $password  The password
-   * 
-   * @return  boolean  True if they match, false otherwise
+   * @param  string  $input  The input
    */
-  public function check(Password $password) {
-    return $this->hasher->check($password, $this);
-  }
-  
-  /**
-   * Checks if this hash needs to be re-hashed
-   * 
-   * @return  boolean  True if it needs re-hashing, false otherwise
-   */
-  public function needsRehash() {
-    return $this->hasher->needsRehash($this);
+  public function check($input) {
+    return $this->hasher->check($input, $this);
   }
 }
