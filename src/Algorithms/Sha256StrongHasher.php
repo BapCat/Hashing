@@ -1,12 +1,15 @@
-<?php namespace BapCat\Security\Hashing;
+<?php namespace BapCat\Hashing\Algorithms;
+
+use BapCat\Hashing\StrongHash;
+use BapCat\Hashing\StrongHasher;
 
 /**
- * Defines a strong hasher, suitable for hashing important data
+ * A SHA256 implementation of a fast hasher, suitable for hashing important data
  * 
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-interface StrongHasher {
+class Sha256StrongHasher implements StrongHasher {
   /**
    * Generate a hash
    * 
@@ -14,7 +17,9 @@ interface StrongHasher {
    * 
    * @return  string  The hashed data
    */
-  public function make($data);
+  public function make($data) {
+    return hash('sha256', $data);
+  }
   
   /**
    * Checks if a hash matches data
@@ -24,5 +29,7 @@ interface StrongHasher {
    * 
    * @return  boolean  True if the data matches the hash, false otherwise
    */
-  public function check($data, StrongHash $hash);
+  public function check($data, StrongHash $hash) {
+    return hash('sha256', $data) == $hash;
+  }
 }

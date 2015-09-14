@@ -1,17 +1,15 @@
-<?php namespace BapCat\Security\Hashing\Algorithms;
+<?php namespace BapCat\Hashing\Algorithms;
 
-use BapCat\Security\Hashing\WeakHash;
-use BapCat\Security\Hashing\WeakHasher;
+use BapCat\Hashing\WeakHash;
+use BapCat\Hashing\WeakHasher;
 
 /**
- * An MD5 implementation of a weak hasher, suitable for validation
- * 
- * @deprecated  MD5 hashes should not be used as they are vulnerable to collisions
+ * A SHA1 implementation of a weak hasher, suitable for validation
  * 
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-class Md5WeakHasher implements WeakHasher {
+class Sha1WeakHasher implements WeakHasher {
   /**
    * Generate a hash
    * 
@@ -20,7 +18,7 @@ class Md5WeakHasher implements WeakHasher {
    * @return  string  The hashed data
    */
   public function make($data) {
-    return hash('md5', $data);
+    return hash('sha1', $data);
   }
   
   /**
@@ -32,6 +30,6 @@ class Md5WeakHasher implements WeakHasher {
    * @return  boolean  True if the data matches the hash, false otherwise
    */
   public function check($data, WeakHash $hash) {
-    return hash('md5', $data) == $hash;
+    return hash('sha1', $data) == $hash;
   }
 }

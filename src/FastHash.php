@@ -1,4 +1,4 @@
-<?php namespace BapCat\Security\Hashing;
+<?php namespace BapCat\Hashing;
 
 use BapCat\Interfaces\Values\Value;
 

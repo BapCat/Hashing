@@ -1,4 +1,4 @@
-<?php namespace BapCat\Security\Hashing;
+<?php namespace BapCat\Hashing;
 
 /**
  * Defines a weak hasher, suitable for validation

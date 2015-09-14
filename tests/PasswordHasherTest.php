@@ -1,9 +1,9 @@
 <?php
 
 use BapCat\Phi\Phi;
-use BapCat\Security\Hashing\PasswordHash;
-use BapCat\Security\Hashing\PasswordHasher;
-use BapCat\Security\Hashing\Algorithms\DefaultPasswordHasher;
+use BapCat\Hashing\PasswordHash;
+use BapCat\Hashing\PasswordHasher;
+use BapCat\Hashing\Algorithms\DefaultPasswordHasher;
 use BapCat\Values\Password;
 
 class PasswordHashTester extends PHPUnit_Framework_TestCase {

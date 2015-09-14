@@ -1,4 +1,4 @@
-<?php namespace BapCat\Security\Hashing;
+<?php namespace BapCat\Hashing;
 
 /**
  * Defines a fast hasher, suitable for checksums

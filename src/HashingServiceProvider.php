@@ -1,20 +1,20 @@
-<?php namespace BapCat\Security\Hashing;
+<?php namespace BapCat\Hashing;
 
 use BapCat\Interfaces\Ioc\Ioc;
 use BapCat\Interfaces\Services\ServiceProvider;
 
 // Fast hashes, suitable for checksums
-use BapCat\Security\Hashing\Algorithms\Crc32FastHasher;
+use BapCat\Hashing\Algorithms\Crc32FastHasher;
 
 // Weak hashes, suitable for validation
-use BapCat\Security\Hashing\Algorithms\Md5WeakHasher;
-use BapCat\Security\Hashing\Algorithms\Sha1WeakHasher;
+use BapCat\Hashing\Algorithms\Md5WeakHasher;
+use BapCat\Hashing\Algorithms\Sha1WeakHasher;
 
 // Strong hashes, suitable for hashing important data
-use BapCat\Security\Hashing\Algorithms\Sha256StrongHasher;
+use BapCat\Hashing\Algorithms\Sha256StrongHasher;
 
 // High-security hashes, suitable for passwords and other critical data
-use BapCat\Security\Hashing\Algorithms\DefaultPasswordHasher;
+use BapCat\Hashing\Algorithms\DefaultPasswordHasher;
 
 class HashingServiceProvider implements ServiceProvider {
   private $ioc;

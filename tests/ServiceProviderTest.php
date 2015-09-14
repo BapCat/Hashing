@@ -1,15 +1,15 @@
 <?php
 
 use BapCat\Phi\Phi;
-use BapCat\Security\Hashing\HashingServiceProvider;
-use BapCat\Security\Hashing\FastHasher;
-use BapCat\Security\Hashing\WeakHasher;
-use BapCat\Security\Hashing\StrongHasher;
-use BapCat\Security\Hashing\PasswordHasher;
-use BapCat\Security\Hashing\Algorithms\Crc32FastHasher;
-use BapCat\Security\Hashing\Algorithms\Sha1WeakHasher;
-use BapCat\Security\Hashing\Algorithms\Sha256StrongHasher;
-use BapCat\Security\Hashing\Algorithms\DefaultPasswordHasher;
+use BapCat\Hashing\HashingServiceProvider;
+use BapCat\Hashing\FastHasher;
+use BapCat\Hashing\WeakHasher;
+use BapCat\Hashing\StrongHasher;
+use BapCat\Hashing\PasswordHasher;
+use BapCat\Hashing\Algorithms\Crc32FastHasher;
+use BapCat\Hashing\Algorithms\Sha1WeakHasher;
+use BapCat\Hashing\Algorithms\Sha256StrongHasher;
+use BapCat\Hashing\Algorithms\DefaultPasswordHasher;
 
 class ServiceProviderTest extends PHPUnit_Framework_TestCase {
   private $ioc;

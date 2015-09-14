@@ -1,8 +1,8 @@
 <?php
 
-use BapCat\Security\Hashing\WeakHasher;
-use BapCat\Security\Hashing\Algorithms\Md5WeakHasher;
-use BapCat\Security\Hashing\Algorithms\Sha1WeakHasher;
+use BapCat\Hashing\WeakHasher;
+use BapCat\Hashing\Algorithms\Md5WeakHasher;
+use BapCat\Hashing\Algorithms\Sha1WeakHasher;
 
 class WeakHasherTest extends  PHPUnit_Framework_TestCase {
   public function testMd5() {

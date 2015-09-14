@@ -1,8 +1,8 @@
 {
-  "name": "bapcat/security",
+  "name": "bapcat/hashing",
   "description": "",
   "license": "GPLv3",
-  "homepage": "http://github.com/BapCat/Security",
+  "homepage": "http://github.com/BapCat/Hashing",
   "keywords": [],
   "minimum-stability": "dev",
   "authors": [
@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "BapCat\\Security\\": "src/"
+      "BapCat\\Hashing\\": "src/"
     }
   }
 }

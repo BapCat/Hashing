@@ -1,7 +1,7 @@
-<?php namespace BapCat\Security\Hashing\Algorithms;
+<?php namespace BapCat\Hashing\Algorithms;
 
-use BapCat\Security\Hashing\FastHash;
-use BapCat\Security\Hashing\FastHasher;
+use BapCat\Hashing\FastHash;
+use BapCat\Hashing\FastHasher;
 
 /**
  * A CRC32 implementation of a fast hasher, suitable for checksums

@@ -1,7 +1,7 @@
 <?php
 
-use BapCat\Security\Hashing\StrongHasher;
-use BapCat\Security\Hashing\Algorithms\Sha256StrongHasher;
+use BapCat\Hashing\StrongHasher;
+use BapCat\Hashing\Algorithms\Sha256StrongHasher;
 
 class StrongHasherTest extends  PHPUnit_Framework_TestCase {
   public function testSha256() {

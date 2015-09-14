@@ -1,8 +1,8 @@
-<?php namespace BapCat\Security\Hashing\Algorithms;
+<?php namespace BapCat\Hashing\Algorithms;
 
 use BapCat\Interfaces\Ioc\Ioc;
-use BapCat\Security\Hashing\PasswordHash;
-use BapCat\Security\Hashing\PasswordHasher;
+use BapCat\Hashing\PasswordHash;
+use BapCat\Hashing\PasswordHasher;
 use BapCat\Values\Password;
 
 /**
