@@ -2,14 +2,14 @@
 
 use BapCat\Phi\Phi;
 use BapCat\Security\Hashing\HashingServiceProvider;
-use BapCat\Security\Hashing\FastHash;
-use BapCat\Security\Hashing\WeakHash;
-use BapCat\Security\Hashing\StrongHash;
-use BapCat\Security\Hashing\PasswordHash;
-use BapCat\Security\Hashing\Algorithms\Crc32FastHash;
-use BapCat\Security\Hashing\Algorithms\Sha1WeakHash;
-use BapCat\Security\Hashing\Algorithms\Sha256StrongHash;
-use BapCat\Security\Hashing\Algorithms\DefaultPasswordHash;
+use BapCat\Security\Hashing\FastHasher;
+use BapCat\Security\Hashing\WeakHasher;
+use BapCat\Security\Hashing\StrongHasher;
+use BapCat\Security\Hashing\PasswordHasher;
+use BapCat\Security\Hashing\Algorithms\Crc32FastHasher;
+use BapCat\Security\Hashing\Algorithms\Sha1WeakHasher;
+use BapCat\Security\Hashing\Algorithms\Sha256StrongHasher;
+use BapCat\Security\Hashing\Algorithms\DefaultPasswordHasher;
 
 class ServiceProviderTest extends PHPUnit_Framework_TestCase {
   private $ioc;
@@ -22,9 +22,9 @@ class ServiceProviderTest extends PHPUnit_Framework_TestCase {
     $provider = new HashingServiceProvider($this->ioc);
     $provider->register();
     
-    $this->assertInstanceOf(Crc32FastHash::class, $this->ioc->make(FastHash::class));
-    $this->assertInstanceOf(Sha1WeakHash::class, $this->ioc->make(WeakHash::class));
-    $this->assertInstanceOf(Sha256StrongHash::class, $this->ioc->make(StrongHash::class));
-    $this->assertInstanceOf(DefaultPasswordHash::class, $this->ioc->make(PasswordHash::class));
+    $this->assertInstanceOf(Crc32FastHasher::class, $this->ioc->make(FastHasher::class));
+    $this->assertInstanceOf(Sha1WeakHasher::class, $this->ioc->make(WeakHasher::class));
+    $this->assertInstanceOf(Sha256StrongHasher::class, $this->ioc->make(StrongHasher::class));
+    $this->assertInstanceOf(DefaultPasswordHasher::class, $this->ioc->make(PasswordHasher::class));
   }
 }

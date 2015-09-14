@@ -1,5 +1,5 @@
 <?php namespace BapCat\Security\Hashing;
 
-interface StrongHash {
+interface WeakHasher {
   public function make($data);
 }
