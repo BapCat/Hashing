@@ -26,7 +26,7 @@ class PasswordHashTester extends PHPUnit_Framework_TestCase {
     $this->assertTrue($hasher->check($password, $hash));
     $this->assertFalse($hasher->needsRehash($hash));
     
-    $hash = new PasswordHash(password_hash($password, $algo, ['cost' => 9]), $hasher);
+    $hash = new PasswordHash(password_hash((string)$password, $algo, ['cost' => 9]), $hasher);
     $this->assertTrue($hasher->needsRehash($hash));
   }
 }
