@@ -20,7 +20,7 @@ class PasswordHashTester extends PHPUnit_Framework_TestCase {
     $password = new Password($password);
     
     $hash = $hasher->make($password);
-    $this->assertTrue(password_verify($password, (string)$hash));
+    $this->assertTrue(password_verify((string)$password, (string)$hash));
     
     $hash = new PasswordHash(password_hash($password, $algo), $hasher);
     $this->assertTrue($hasher->check($password, $hash));
