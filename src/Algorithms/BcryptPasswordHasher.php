@@ -1,8 +1,8 @@
 <?php namespace BapCat\Hashing\Algorithms;
 
-use BapCat\Interfaces\Ioc\Ioc;
 use BapCat\Hashing\PasswordHash;
 use BapCat\Hashing\PasswordHasher;
+use BapCat\Interfaces\Ioc\Ioc;
 use BapCat\Values\Password;
 
 /**
@@ -11,7 +11,7 @@ use BapCat\Values\Password;
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-class DefaultPasswordHasher implements PasswordHasher {
+class BcryptPasswordHasher implements PasswordHasher {
   /**
    * The IOC container
    * 
@@ -33,10 +33,10 @@ class DefaultPasswordHasher implements PasswordHasher {
    * 
    * @param  Password  $password  The password to hash
    * 
-   * @return  PasswordHash  The hashed password
+   * @return  BcryptPasswordHash  The hashed password
    */
   public function make(Password $password) {
-    return $this->ioc->make(PasswordHash::class, [password_hash((string)$password, PASSWORD_DEFAULT)]);
+    return $this->ioc->make(BcryptPasswordHash::class, [password_hash((string)$password, PASSWORD_BCRYPT)]);
   }
   
   /**

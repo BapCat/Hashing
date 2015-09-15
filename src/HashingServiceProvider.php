@@ -14,7 +14,7 @@ use BapCat\Hashing\Algorithms\Sha1WeakHasher;
 use BapCat\Hashing\Algorithms\Sha256StrongHasher;
 
 // High-security hashes, suitable for passwords and other critical data
-use BapCat\Hashing\Algorithms\DefaultPasswordHasher;
+use BapCat\Hashing\Algorithms\BcryptPasswordHasher;
 
 class HashingServiceProvider implements ServiceProvider {
   private $ioc;
@@ -28,11 +28,11 @@ class HashingServiceProvider implements ServiceProvider {
     $this->ioc->singleton(Md5WeakHasher::class, Md5WeakHasher::class);
     $this->ioc->singleton(Sha1WeakHasher::class, Sha1WeakHasher::class);
     $this->ioc->singleton(Sha256StrongHasher::class, Sha256StrongHasher::class);
-    $this->ioc->singleton(DefaultPasswordHasher::class, DefaultPasswordHasher::class);
+    $this->ioc->singleton(BcryptPasswordHasher::class, BcryptPasswordHasher::class);
     
     $this->ioc->bind(FastHasher::class, Crc32FastHasher::class);
     $this->ioc->bind(WeakHasher::class, Sha1WeakHasher::class);
     $this->ioc->bind(StrongHasher::class, Sha256StrongHasher::class);
-    $this->ioc->bind(PasswordHasher::class, DefaultPasswordHasher::class);
+    $this->ioc->bind(PasswordHasher::class, BcryptPasswordHasher::class);
   }
 }

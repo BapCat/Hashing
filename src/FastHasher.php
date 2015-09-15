@@ -6,16 +6,7 @@
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-interface FastHasher {
-  /**
-   * Generate a hash
-   * 
-   * @param  string  $data  The data to hash
-   * 
-   * @return  string  The hashed data
-   */
-  public function make($data);
-  
+interface FastHasher extends Hasher {
   /**
    * Checks if a hash matches data
    * 

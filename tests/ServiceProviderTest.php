@@ -9,7 +9,7 @@ use BapCat\Hashing\PasswordHasher;
 use BapCat\Hashing\Algorithms\Crc32FastHasher;
 use BapCat\Hashing\Algorithms\Sha1WeakHasher;
 use BapCat\Hashing\Algorithms\Sha256StrongHasher;
-use BapCat\Hashing\Algorithms\DefaultPasswordHasher;
+use BapCat\Hashing\Algorithms\BcryptPasswordHasher;
 
 class ServiceProviderTest extends PHPUnit_Framework_TestCase {
   private $ioc;
@@ -25,6 +25,6 @@ class ServiceProviderTest extends PHPUnit_Framework_TestCase {
     $this->assertInstanceOf(Crc32FastHasher::class, $this->ioc->make(FastHasher::class));
     $this->assertInstanceOf(Sha1WeakHasher::class, $this->ioc->make(WeakHasher::class));
     $this->assertInstanceOf(Sha256StrongHasher::class, $this->ioc->make(StrongHasher::class));
-    $this->assertInstanceOf(DefaultPasswordHasher::class, $this->ioc->make(PasswordHasher::class));
+    $this->assertInstanceOf(BcryptPasswordHasher::class, $this->ioc->make(PasswordHasher::class));
   }
 }

@@ -1,17 +1,17 @@
 <?php
 
-use BapCat\Phi\Phi;
-use BapCat\Hashing\PasswordHash;
+use BapCat\Hashing\Algorithms\BcryptPasswordHash;
+use BapCat\Hashing\Algorithms\BcryptPasswordHasher;
 use BapCat\Hashing\PasswordHasher;
-use BapCat\Hashing\Algorithms\DefaultPasswordHasher;
+use BapCat\Phi\Phi;
 use BapCat\Values\Password;
 
-class PasswordHashTester extends PHPUnit_Framework_TestCase {
+class BcryptPasswordHashTester extends PHPUnit_Framework_TestCase {
   public function testBcrypt() {
     $ioc = Phi::instance();
     
-    $hasher = new DefaultPasswordHasher($ioc);
-    $ioc->bind(PasswordHasher::class, $hasher);
+    $hasher = new BcryptPasswordHasher($ioc);
+    $ioc->bind(BcryptPasswordHasher::class, $hasher);
     
     $this->doHash($hasher, PASSWORD_DEFAULT, 'Test test');
   }
@@ -20,13 +20,15 @@ class PasswordHashTester extends PHPUnit_Framework_TestCase {
     $password = new Password($password);
     
     $hash = $hasher->make($password);
+    
+    $this->assertInstanceOf(BcryptPasswordHash::class, $hash);
     $this->assertTrue(password_verify((string)$password, (string)$hash));
     
-    $hash = new PasswordHash(password_hash((string)$password, $algo), $hasher);
+    $hash = new BcryptPasswordHash(password_hash((string)$password, $algo), $hasher);
     $this->assertTrue($hasher->check($password, $hash));
     $this->assertFalse($hasher->needsRehash($hash));
     
-    $hash = new PasswordHash(password_hash((string)$password, $algo, ['cost' => 9]), $hasher);
+    $hash = new BcryptPasswordHash(password_hash((string)$password, $algo, ['cost' => 9]), $hasher);
     $this->assertTrue($hasher->needsRehash($hash));
   }
 }

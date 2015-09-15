@@ -2,6 +2,7 @@
 
 use BapCat\Hashing\WeakHash;
 use BapCat\Hashing\WeakHasher;
+use BapCat\Interfaces\Ioc\Ioc;
 
 /**
  * A SHA1 implementation of a weak hasher, suitable for validation
@@ -11,14 +12,30 @@ use BapCat\Hashing\WeakHasher;
  */
 class Sha1WeakHasher implements WeakHasher {
   /**
+   * The IOC container
+   * 
+   * @var  Ioc
+   */
+  private $ioc;
+  
+  /**
+   * Constructor
+   * 
+   * @param  Ioc  $ioc  The IOC container
+   */
+  public function __construct(Ioc $ioc) {
+    $this->ioc = $ioc;
+  }
+  
+  /**
    * Generate a hash
    * 
    * @param  string  $data  The data to hash
    * 
-   * @return  string  The hashed data
+   * @return  Sha1WeakHash  The hashed data
    */
   public function make($data) {
-    return hash('sha1', $data);
+    return $this->ioc->make(Sha1WeakHash::class, [hash('sha1', $data)]);
   }
   
   /**
