@@ -48,7 +48,7 @@ class DefaultPasswordHasher implements PasswordHasher {
    * @return  boolean  True if the password matches the hash, false otherwise
    */
   public function check(Password $password, PasswordHash $hash) {
-    return password_verify($password, $hash);
+    return password_verify((string)$password, $hash);
   }
   
   /**
