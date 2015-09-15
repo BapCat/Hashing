@@ -36,7 +36,7 @@ class DefaultPasswordHasher implements PasswordHasher {
    * @return  PasswordHash  The hashed password
    */
   public function make(Password $password) {
-    return $this->ioc->make(PasswordHash::class, [password_hash($password, PASSWORD_DEFAULT)]);
+    return $this->ioc->make(PasswordHash::class, [password_hash((string)$password, PASSWORD_DEFAULT)]);
   }
   
   /**
