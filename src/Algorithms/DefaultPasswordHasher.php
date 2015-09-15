@@ -59,6 +59,6 @@ class DefaultPasswordHasher implements PasswordHasher {
    * @return  boolean  True if it needs re-hashing, false otherwise
    */
   public function needsRehash(PasswordHash $hash) {
-    return password_needs_rehash($hash, PASSWORD_DEFAULT);
+    return password_needs_rehash((string)$hash, PASSWORD_DEFAULT);
   }
 }
