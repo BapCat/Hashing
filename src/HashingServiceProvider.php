@@ -17,6 +17,8 @@ use BapCat\Hashing\Algorithms\Sha256StrongHasher;
 use BapCat\Hashing\Algorithms\BcryptPasswordHasher;
 
 class HashingServiceProvider implements ServiceProvider {
+  const provides = 'hashing';
+  
   private $ioc;
   
   public function __construct(Ioc $ioc) {
@@ -24,15 +26,13 @@ class HashingServiceProvider implements ServiceProvider {
   }
   
   public function register() {
-    $this->ioc->singleton(Crc32FastHasher::class, Crc32FastHasher::class);
-    $this->ioc->singleton(Md5WeakHasher::class, Md5WeakHasher::class);
-    $this->ioc->singleton(Sha1WeakHasher::class, Sha1WeakHasher::class);
-    $this->ioc->singleton(Sha256StrongHasher::class, Sha256StrongHasher::class);
-    $this->ioc->singleton(BcryptPasswordHasher::class, BcryptPasswordHasher::class);
+    $this->ioc->singleton(FastHasher::class,     Crc32FastHasher::class);
+    $this->ioc->singleton(WeakHasher::class,     Sha1WeakHasher::class);
+    $this->ioc->singleton(StrongHasher::class,   Sha256StrongHasher::class);
+    $this->ioc->singleton(PasswordHasher::class, BcryptPasswordHasher::class);
+  }
+  
+  public function boot() {
     
-    $this->ioc->bind(FastHasher::class, Crc32FastHasher::class);
-    $this->ioc->bind(WeakHasher::class, Sha1WeakHasher::class);
-    $this->ioc->bind(StrongHasher::class, Sha256StrongHasher::class);
-    $this->ioc->bind(PasswordHasher::class, BcryptPasswordHasher::class);
   }
 }
