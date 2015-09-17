@@ -10,7 +10,7 @@ use BapCat\Interfaces\Ioc\Ioc;
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-class Crc32FastHasher implements FastHasher {
+class Crc32FastHasher extends FastHasher {
   /**
    * The IOC container
    * 

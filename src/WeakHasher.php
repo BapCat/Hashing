@@ -6,7 +6,7 @@
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-interface WeakHasher extends Hasher {
+abstract class WeakHasher extends Hasher {
   /**
    * Checks if a hash matches data
    * 
@@ -15,5 +15,5 @@ interface WeakHasher extends Hasher {
    * 
    * @return  boolean  True if the data matches the hash, false otherwise
    */
-  public function check($data, WeakHash $hash);
+  public abstract function check($data, WeakHash $hash);
 }

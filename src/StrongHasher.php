@@ -6,7 +6,7 @@
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-interface StrongHasher extends Hasher {
+abstract class StrongHasher extends Hasher {
   /**
    * Checks if a hash matches data
    * 
@@ -15,5 +15,5 @@ interface StrongHasher extends Hasher {
    * 
    * @return  boolean  True if the data matches the hash, false otherwise
    */
-  public function check($data, StrongHash $hash);
+  public abstract function check($data, StrongHash $hash);
 }

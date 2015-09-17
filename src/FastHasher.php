@@ -6,7 +6,7 @@
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-interface FastHasher extends Hasher {
+abstract class FastHasher extends Hasher {
   /**
    * Checks if a hash matches data
    * 
@@ -15,5 +15,5 @@ interface FastHasher extends Hasher {
    * 
    * @return  boolean  True if the data matches the hash, false otherwise
    */
-  public function check($data, FastHash $hash);
+  public abstract function check($data, FastHash $hash);
 }

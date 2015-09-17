@@ -10,7 +10,7 @@ use BapCat\Interfaces\Ioc\Ioc;
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-class Sha1WeakHasher implements WeakHasher {
+class Sha1WeakHasher extends WeakHasher {
   /**
    * The IOC container
    * 
