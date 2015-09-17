@@ -1,7 +1,7 @@
 <?php namespace BapCat\Hashing;
 
 use BapCat\Interfaces\Ioc\Ioc;
-use BapCat\Interfaces\Services\ServiceProvider;
+use BapCat\Services\ServiceProvider;
 
 // Fast hashes, suitable for checksums
 use BapCat\Hashing\Algorithms\Crc32FastHasher;
