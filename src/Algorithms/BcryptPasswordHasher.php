@@ -2,7 +2,6 @@
 
 use BapCat\Hashing\PasswordHash;
 use BapCat\Hashing\PasswordHasher;
-use BapCat\Interfaces\Ioc\Ioc;
 use BapCat\Values\Password;
 
 /**
@@ -13,22 +12,6 @@ use BapCat\Values\Password;
  */
 class BcryptPasswordHasher implements PasswordHasher {
   /**
-   * The IOC container
-   * 
-   * @var  Ioc
-   */
-  private $ioc;
-  
-  /**
-   * Constructor
-   * 
-   * @param  Ioc  $ioc  The IOC container
-   */
-  public function __construct(Ioc $ioc) {
-    $this->ioc = $ioc;
-  }
-  
-  /**
    * Generate a hash
    * 
    * @param  Password  $password  The password to hash
@@ -36,7 +19,7 @@ class BcryptPasswordHasher implements PasswordHasher {
    * @return  BcryptPasswordHash  The hashed password
    */
   public function make(Password $password) {
-    return $this->ioc->make(BcryptPasswordHash::class, [password_hash((string)$password, PASSWORD_BCRYPT)]);
+    return new BcryptPasswordHash(password_hash((string)$password, PASSWORD_BCRYPT), $this);
   }
   
   /**

@@ -2,7 +2,6 @@
 
 use BapCat\Hashing\WeakHash;
 use BapCat\Hashing\WeakHasher;
-use BapCat\Interfaces\Ioc\Ioc;
 
 /**
  * An MD5 implementation of a weak hasher, suitable for validation
@@ -14,22 +13,6 @@ use BapCat\Interfaces\Ioc\Ioc;
  */
 class Md5WeakHasher extends WeakHasher {
   /**
-   * The IOC container
-   * 
-   * @var  Ioc
-   */
-  private $ioc;
-  
-  /**
-   * Constructor
-   * 
-   * @param  Ioc  $ioc  The IOC container
-   */
-  public function __construct(Ioc $ioc) {
-    $this->ioc = $ioc;
-  }
-  
-  /**
    * Generate a hash
    * 
    * @param  string  $data  The data to hash
@@ -37,7 +20,7 @@ class Md5WeakHasher extends WeakHasher {
    * @return  Md5WeakHash  The hashed data
    */
   public function make($data) {
-    return $this->ioc->make(Md5WeakHash::class, [hash('md5', $data)]);
+    return new Md5WeakHash(hash('md5', $data), $this);
   }
   
   /**
