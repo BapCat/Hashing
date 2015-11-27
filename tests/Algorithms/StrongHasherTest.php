@@ -3,11 +3,10 @@
 use BapCat\Hashing\StrongHasher;
 use BapCat\Hashing\Algorithms\Sha256StrongHash;
 use BapCat\Hashing\Algorithms\Sha256StrongHasher;
-use BapCat\Phi\Phi;
 
 class StrongHasherTest extends  PHPUnit_Framework_TestCase {
   public function testSha256() {
-    $this->doHash(new Sha256StrongHasher(Phi::instance()), 'sha256', 'Test');
+    $this->doHash(new Sha256StrongHasher(), 'sha256', 'Test');
   }
   
   private function doHash(StrongHasher $hasher, $algo, $data) {

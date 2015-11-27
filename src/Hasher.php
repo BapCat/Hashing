@@ -10,9 +10,18 @@ interface Hasher {
   /**
    * Generate a hash
    * 
-   * @param  string  $data  The data to hash
+   * @param   string  $data  The data to hash
    * 
-   * @return  string  The hashed data
+   * @return  Hash    The hashed data
    */
   public function make($data);
+  
+  /**
+   * Wrap an already-calculated raw hash into a Hash object
+   * 
+   * @param   string  $hash  The raw hash
+   * 
+   * @return  Hash    The hash, wrapped in a Hash object
+   */
+  public function wrap($hash);
 }

@@ -3,16 +3,11 @@
 use BapCat\Hashing\Algorithms\BcryptPasswordHash;
 use BapCat\Hashing\Algorithms\BcryptPasswordHasher;
 use BapCat\Hashing\PasswordHasher;
-use BapCat\Phi\Phi;
 use BapCat\Values\Password;
 
 class BcryptPasswordHashTester extends PHPUnit_Framework_TestCase {
   public function testBcrypt() {
-    $ioc = Phi::instance();
-    
-    $hasher = new BcryptPasswordHasher($ioc);
-    $ioc->bind(BcryptPasswordHasher::class, $hasher);
-    
+    $hasher = new BcryptPasswordHasher();
     $this->doHash($hasher, PASSWORD_DEFAULT, 'Test test');
   }
   
