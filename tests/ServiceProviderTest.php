@@ -21,10 +21,16 @@ class ServiceProviderTest extends PHPUnit_Framework_TestCase {
   public function testProvider() {
     $provider = new HashingServiceProvider($this->ioc);
     $provider->register();
+    $provider->boot();
     
     $this->assertInstanceOf(Crc32FastHasher::class, $this->ioc->make(FastHasher::class));
     $this->assertInstanceOf(Sha1WeakHasher::class, $this->ioc->make(WeakHasher::class));
     $this->assertInstanceOf(Sha256StrongHasher::class, $this->ioc->make(StrongHasher::class));
     $this->assertInstanceOf(BcryptPasswordHasher::class, $this->ioc->make(PasswordHasher::class));
+    
+    $this->assertSame($this->ioc->make(FastHasher::class),     $this->ioc->make(FastHasher::class));
+    $this->assertSame($this->ioc->make(WeakHasher::class),     $this->ioc->make(WeakHasher::class));
+    $this->assertSame($this->ioc->make(StrongHasher::class),   $this->ioc->make(StrongHasher::class));
+    $this->assertSame($this->ioc->make(PasswordHasher::class), $this->ioc->make(PasswordHasher::class));
   }
 }

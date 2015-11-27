@@ -9,7 +9,7 @@ use BapCat\Hashing\StrongHasher;
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-class Sha256StrongHasher implements StrongHasher {
+class Sha256StrongHasher extends StrongHasher {
   /**
    * {@inheritdoc}
    */

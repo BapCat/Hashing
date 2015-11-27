@@ -55,7 +55,7 @@ abstract class Hash extends Value {
    * @return  string  A string representation of this object
    */
   public function __toString() {
-    return $this->raw;
+    return (string)$this->raw;
   }
   
   /**

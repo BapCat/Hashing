@@ -11,7 +11,7 @@ use BapCat\Hashing\WeakHasher;
  * @author    Corey Frenette
  * @copyright Copyright (c) 2015, BapCat
  */
-class Md5WeakHasher implements WeakHasher {
+class Md5WeakHasher extends WeakHasher {
   /**
    * {@inheritdoc}
    */
