@@ -38,7 +38,7 @@ class HashingServiceProvider implements ServiceProvider {
     $this->ioc->bind(PasswordHasher::class, BcryptPasswordHasher::class);
     
     $this->ioc->bind(FastHash::class, function($hash) {
-      return $this->ioc->make(FashHasher::class)->wrap($hash);
+      return $this->ioc->make(FastHasher::class)->wrap($hash);
     });
     
     $this->ioc->bind(WeakHash::class, function($hash) {
