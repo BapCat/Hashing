@@ -36,6 +36,22 @@ class HashingServiceProvider implements ServiceProvider {
     $this->ioc->bind(WeakHasher::class,     Sha1WeakHasher::class);
     $this->ioc->bind(StrongHasher::class,   Sha256StrongHasher::class);
     $this->ioc->bind(PasswordHasher::class, BcryptPasswordHasher::class);
+    
+    $this->ioc->bind(FastHash::class, function($hash) {
+      return $this->ioc->make(FastHasher::class)->wrap($hash);
+    });
+    
+    $this->ioc->bind(WeakHash::class, function($hash) {
+      return $this->ioc->make(WeakHasher::class)->wrap($hash);
+    });
+    
+    $this->ioc->bind(StrongHash::class, function($hash) {
+      return $this->ioc->make(StrongHasher::class)->wrap($hash);
+    });
+    
+    $this->ioc->bind(PasswordHash::class, function($hash) {
+      return $this->ioc->make(PasswordHasher::class)->wrap($hash);
+    });
   }
   
   public function boot() {
