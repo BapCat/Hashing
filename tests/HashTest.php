@@ -1,47 +1,50 @@
-<?php
+<?php declare(strict_types=1);
 
 use BapCat\Hashing\Hash;
 use BapCat\Hashing\Hasher;
+use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase;
 
-class HashTest extends PHPUnit_Framework_TestCase {
-  private function makeHash($hash) {
-    return $this->getMockForAbstractClass(Hash::class, [$hash, '/^test$/']);
+class HashTest extends TestCase {
+  private function makeHash($hash): Hash {
+    return $this->getMockBuilder(Hash::class)->setConstructorArgs([$hash, '/^test$/'])->getMockForAbstractClass();
   }
-  
-  public function testConstructingWithValidHash() {
-    $hash = $this->makeHash('test');
+
+  public function testConstructingWithValidHash(): void {
+    $this->makeHash('test');
+    Assert::assertTrue(true);
   }
-  
-  public function testConstructingWithNull() {
-    $this->setExpectedException(InvalidArgumentException::class);
-    $hash = $this->makeHash(null);
+
+  public function testConstructingWithNull(): void {
+    $this->expectException(InvalidArgumentException::class);
+    $this->makeHash(null);
   }
-  
-  public function testConstructingWithInvalidString() {
-    $this->setExpectedException(InvalidArgumentException::class);
-    $hash = $this->makeHash('bad');
+
+  public function testConstructingWithInvalidString(): void {
+    $this->expectException(InvalidArgumentException::class);
+    $this->makeHash('bad');
   }
-  
-  public function testConstructingWithWrongDataType() {
-    $this->setExpectedException(InvalidArgumentException::class);
-    $hash = $this->makeHash(true);
+
+  public function testConstructingWithWrongDataType(): void {
+    $this->expectException(InvalidArgumentException::class);
+    $this->makeHash(true);
   }
-  
-  public function testGetRaw() {
+
+  public function testGetRaw(): void {
     $input = 'test';
     $hash = $this->makeHash($input);
-    $this->assertSame($hash->raw, $input);
+    Assert::assertSame($hash->raw, $input);
   }
-  
-  public function testToString() {
+
+  public function testToString(): void {
     $input = 'test';
     $hash = $this->makeHash($input);
-    $this->assertSame((string)$hash, $input);
+    Assert::assertSame((string)$hash, $input);
   }
-  
-  public function testJsonEncode() {
+
+  public function testJsonEncode(): void {
     $input = 'test';
     $hash = $this->makeHash($input);
-    $this->assertSame(json_encode($hash), "\"$input\"");
+    Assert::assertSame(json_encode($hash), "\"$input\"");
   }
 }
