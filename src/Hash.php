@@ -1,80 +1,68 @@
-<?php namespace BapCat\Hashing;
+<?php declare(strict_types=1); namespace BapCat\Hashing;
 
-use BapCat\Interfaces\Values\Value;
+use BapCat\Values\Value;
 
 use InvalidArgumentException;
 
+use function is_string;
+
 /**
  * Represents a generic hash
- * 
+ *
+ * @property-read  string  $raw
+ *
  * @author    Corey Frenette
- * @copyright Copyright (c) 2015, BapCat
+ * @copyright Copyright (c) 2019, BapCat
  */
 abstract class Hash extends Value {
-  /**
-   * The hash
-   * 
-   * @var  string
-   */
+  /** @var  string  $raw */
   private $raw;
-  
+
   /**
-   * A hasher
-   * 
-   * @var  Hasher
-   */
-  private $hasher;
-  
-  /**
-   * Constructor
-   * 
-   * @param  string  $hash              The hash to wrap 
+   * @param  string  $hash              The hash to wrap
    * @param  string  $validation_regex  A regex to validate this hash
    */
-  public function __construct($hash, $validation_regex) {
+  public function __construct($hash, string $validation_regex) {
     $this->validate($hash, $validation_regex);
-    $this->raw = $hash;
+    $this->raw = (string)$hash;
   }
-  
+
   /**
    * Ensures the hash passed in is valid
-   * 
-   * @throws  InvalidArgumentException  If the value is not a valid hash
-   * 
-   * @param  string  $hash  The value to validate
+   *
+   * @param  string  $hash
+   * @param  string  $validation_regex
    */
-  private function validate($hash, $validation_regex) {
-    if(preg_match($validation_regex, $hash) === 0) {
-      throw new InvalidArgumentException("Expected hash, but got [$hash] instead");
+  private function validate($hash, string $validation_regex): void {
+    if(!is_string($hash) || preg_match($validation_regex, $hash) === 0) {
+      throw new InvalidArgumentException('Expected hash, but got ' . var_export($hash, true) . '] instead');
     }
   }
-  
+
   /**
    * Converts this object to a string
-   * 
+   *
    * @return  string  A string representation of this object
    */
-  public function __toString() {
-    return (string)$this->raw;
-  }
-  
-  /**
-   * Converts this object to a json encodable-form
-   * 
-   * @return  string  A representation of this object suitable for encoding
-   */
-  public function jsonSerialize() {
+  public function __toString(): string {
     return $this->raw;
   }
-  
+
+  /**
+   * Converts this object to a json encodable-form
+   *
+   * @return  string  A representation of this object suitable for encoding
+   */
+  public function jsonSerialize(): string {
+    return $this->raw;
+  }
+
   /**
    * Gets the raw value this object wraps
-   * 
+   *
    * @return  string  The raw value this object wraps
-   * 
-   * @return  boolean  True if they match, false otherwise
    */
-  protected function getRaw() {
+  protected function getRaw(): string {
     return $this->raw;
   }
 }

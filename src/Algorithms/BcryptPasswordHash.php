@@ -1,18 +1,16 @@
-<?php namespace BapCat\Hashing\Algorithms;
+<?php declare(strict_types=1); namespace BapCat\Hashing\Algorithms;
 
 use BapCat\Hashing\PasswordHash;
 
 /**
  * Represents a BCrypt password hash
- * 
+ *
  * @author    Corey Frenette
- * @copyright Copyright (c) 2015, BapCat
+ * @copyright Copyright (c) 2019, BapCat
  */
 class BcryptPasswordHash extends PasswordHash {
   /**
-   * Constructor
-   * 
-   * @param  string                $name    The hash to wrap 
+   * @param  string                $hash    The hash to wrap
    * @param  BcryptPasswordHasher  $hasher  A hasher
    */
   public function __construct($hash, BcryptPasswordHasher $hasher) {
