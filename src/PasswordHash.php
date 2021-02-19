@@ -1,9 +1,6 @@
 <?php declare(strict_types=1); namespace BapCat\Hashing;
 
-use BapCat\Interfaces\Values\Value;
 use BapCat\Values\Password;
-
-use InvalidArgumentException;
 
 /**
  * Represents a hashed password

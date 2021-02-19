@@ -1,7 +1,6 @@
 <?php declare(strict_types=1);
 
 use BapCat\Hashing\Hash;
-use BapCat\Hashing\Hasher;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 

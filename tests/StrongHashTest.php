@@ -14,7 +14,7 @@ class StrongHashTest extends TestCase {
 
     $this->hasher = $this
       ->getMockBuilder(StrongHasher::class)
-      ->setMethods(['check'])
+      ->onlyMethods(['check'])
       ->getMockForAbstractClass();
 
     $this->hasher

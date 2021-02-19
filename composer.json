@@ -2,7 +2,7 @@
   "name": "bapcat/hashing",
   "description": "",
   "license": "GPL-3.0-or-later",
-  "homepage": "http://github.com/BapCat/Hashing",
+  "homepage": "https://github.com/BapCat/Hashing",
   "keywords": [],
   "authors": [
     {
@@ -10,15 +10,23 @@
       "email": "corey@narwhunderful.com"
     }
   ],
+  "config": {
+    "preferred-install": "dist",
+    "platform": {
+      "php": "7.4"
+    },
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
   "require": {
-    "php": "^7.1",
+    "php" : "^7.4|^8.0",
     "ext-json": "*",
-    "bapcat/values": "^0.2"
+    "bapcat/values": "^1.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.5",
+    "phpunit/phpunit": "^9.5",
     "bapcat/services": "^0.3",
-    "bapcat/phi": "^1.0 || ^2.0 || ^3.0"
+    "bapcat/phi": "^1.0 || ^2.0 || ^3.0 || ^4.0"
   },
   "suggest": {
     "bapcat/services": "The provided service will bind all base classes to sensible defaults"

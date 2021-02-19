@@ -13,7 +13,7 @@ class HasherTest extends TestCase {
 
     $this->hasher = $this
       ->getMockBuilder(Hasher::class)
-      ->setMethods(['make'])
+      ->onlyMethods(['make'])
       ->getMockForAbstractClass();
 
     $this->hasher
