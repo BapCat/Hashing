@@ -14,7 +14,7 @@ class WeakHashTest extends TestCase {
 
     $this->hasher = $this
       ->getMockBuilder(WeakHasher::class)
-      ->setMethods(['check'])
+      ->onlyMethods(['check'])
       ->getMockForAbstractClass();
 
     $this->hasher

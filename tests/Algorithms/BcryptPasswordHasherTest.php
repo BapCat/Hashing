@@ -12,7 +12,7 @@ class BcryptPasswordHashTester extends TestCase {
     $this->doHash($hasher, PASSWORD_DEFAULT, 'Test test');
   }
 
-  private function doHash(PasswordHasher $hasher, int $algo, string $password): void {
+  private function doHash(PasswordHasher $hasher, string $algo, string $password): void {
     $password = new Password($password);
 
     $hash = $hasher->make($password);

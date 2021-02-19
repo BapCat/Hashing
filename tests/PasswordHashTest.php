@@ -15,14 +15,14 @@ class PasswordHashTest extends TestCase {
 
     $this->hasher = $this
       ->getMockBuilder(PasswordHasher::class)
-      ->setMethods(['check', 'needsRehash'])
+      ->onlyMethods(['check', 'needsRehash'])
       ->getMockForAbstractClass()
     ;
 
     $this->hasher
       ->method('check')
-      ->will($this->returnCallback(function(string $input): bool {
-        return $input === 'testtest';
+      ->will($this->returnCallback(function(Password $input): bool {
+        return (string)$input === 'testtest';
       }))
     ;
 

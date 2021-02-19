@@ -14,7 +14,7 @@ class FastHashTest extends TestCase {
 
     $this->hasher = $this
       ->getMockBuilder(FastHasher::class)
-      ->setMethods(['check'])
+      ->onlyMethods(['check'])
       ->getMockForAbstractClass();
 
     $this->hasher
